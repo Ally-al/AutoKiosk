@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "500310654304",
+    "project_id": "autokiosk-1f820",
+    "storage_bucket": "autokiosk-1f820.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500310654304:android:c574fb922b6fff6cd2f205",
+        "android_client_info": {
+          "package_name": "com.example.autokiosk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXRfzV5X0DETa7FjKLgMzhCsbTiNNYTP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
