@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue_accent">@android:color/holo_green_dark</color>
     <color name="dark_grey">#7E7E83</color>
+    <color name="menu_background">#F0EFFE</color>
 </resources>
