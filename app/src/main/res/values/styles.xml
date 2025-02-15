@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EditTextAuth">
+        <item name="android:layout_marginHorizontal">50dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:background">@drawable/rounded_edit_text</item>
+    </style>
+
+    <style name="Buttons">
+        <item name="android:layout_height">60dp</item>
+        <item name="backgroundTint">@color/blue_accent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

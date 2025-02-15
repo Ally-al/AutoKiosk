@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment_catalog"
+        android:icon="@drawable/ic_catalog"
+        android:title="@string/catalog" />
+    <item
+        android:id="@+id/fragment_barcode_scanner"
+        android:icon="@drawable/ic_scanner"
+        android:title="@string/scanner" />
+    <item
+        android:id="@+id/fragment_cart"
+        android:icon="@drawable/ic_cart"
+        android:title="@string/cart" />
+    <item
+        android:id="@+id/fragment_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
+</menu>

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">AutoKiosk</string>
+    <string name="scan_the_barcode">Сканировать штрихкод</string>
+    <string name="btn_enter_the_code_manually">Ввести код вручную</string>
+    <string name="place_an_order">Оформить заказ</string>
+    <string name="enter">Вход</string>
+    <string name="hint_email">Введите email</string>
+    <string name="hint_password">Введите пароль</string>
+    <string name="btn_login">Войти</string>
+    <string name="catalog">Каталог</string>
+    <string name="scanner">Сканер</string>
+    <string name="cart">Корзина</string>
+    <string name="profile">Профиль</string>
+    <string name="add_to_cart">В корзину</string>
+    <string name="product_info">Информация о товаре</string>
+    <string name="product_contents">Состав</string>
+    <string name="nutrition">Пищевая ценность</string>
+    <string name="kcal">ккал</string>
+    <string name="proteins">б</string>
+    <string name="fats">ж</string>
+    <string name="carbohydrates">у</string>
+    <string name="shelf_life">Срок годности, условия хранения</string>
+    <string name="brand">Бренд</string>
+    <string name="purchase_history">История покупок</string>
+    <string name="link_card_to_account">Привязка карты</string>
+    <string name="logout">Выйти</string>
+    <string name="create_account">Создайте аккаунт</string>
+    <string name="hint_confirm_password">Подтвердите пароль</string>
+    <string name="register">Регистрация</string>
+    <string name="already_have_account">Уже есть аккаунт? Войти</string>
+    <string name="link_register">Регистрация</string>
+</resources>
