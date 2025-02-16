@@ -14,7 +14,7 @@
     <string name="add_to_cart">В корзину</string>
     <string name="product_info">Информация о товаре</string>
     <string name="product_contents">Состав</string>
-    <string name="nutrition">Пищевая ценность</string>
+    <string name="nutrition">Пищевая ценность на 100 г</string>
     <string name="kcal">ккал</string>
     <string name="proteins">б</string>
     <string name="fats">ж</string>
