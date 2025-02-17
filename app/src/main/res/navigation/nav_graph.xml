@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/fragment_login">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/auth_nav_graph">
 
-    <fragment
-        android:id="@+id/fragment_login"
-        android:name="com.example.autokiosk.presentation.auth.view.LoginFragment"
-        android:label="Login" />
-
-    <fragment
-        android:id="@+id/fragment_register"
-        android:name="com.example.autokiosk.presentation.auth.view.RegisterFragment"
-        android:label="Register" />
-
-    <fragment
-        android:id="@+id/fragment_main_container"
-        android:name="com.example.autokiosk.presentation.MainContainerFragment"
-        android:label="MainContainerFragment" />
+    <include app:graph="@navigation/auth_nav_graph" />
+    <include app:graph="@navigation/home_nav_graph" />
 
 </navigation>

@@ -24,6 +24,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         val textEmail = view.findViewById<TextView>(R.id.text_email)
         val linkLogout = view.findViewById<TextView>(R.id.text_logout)
+        val linkPurchaseHistory = view.findViewById<TextView>(R.id.text_purchase_history)
+        val linkBankCard = view.findViewById<TextView>(R.id.text_bank_card)
 
         viewModel.loadUserEmail()
 
@@ -33,6 +35,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         linkLogout.setOnClickListener {
             showLogoutDialog()
+        }
+        linkPurchaseHistory.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_to_purchase_history)
+        }
+        linkBankCard.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_to_bank_card)
+
         }
     }
 
@@ -52,6 +61,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun logout() {
         FirebaseAuth.getInstance().signOut()
-        findNavController().navigate(R.id.fragment_login)
+        findNavController().navigate(R.id.action_profile_to_login)
     }
 }

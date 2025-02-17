@@ -36,13 +36,13 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
         loginLink.setOnClickListener {
-            findNavController().navigate(R.id.fragment_login)
+            findNavController().navigate(R.id.action_register_to_login)
         }
 
         viewModel.registerResult.observe(viewLifecycleOwner) { success ->
             if (success) {
                 Toast.makeText(requireContext(), "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.fragment_login)
+                findNavController().navigate(R.id.action_register_to_login)
             } else {
                 Toast.makeText(requireContext(), "Ошибка регистрации!", Toast.LENGTH_SHORT).show()
             }

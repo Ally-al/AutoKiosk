@@ -51,7 +51,7 @@
         android:layout_marginTop="40dp"/>
 
     <TextView
-        android:id="@+id/text_history"
+        android:id="@+id/text_purchase_history"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/purchase_history"
@@ -73,7 +73,7 @@
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/text_card"
+        android:id="@+id/text_bank_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/link_card_to_account"
