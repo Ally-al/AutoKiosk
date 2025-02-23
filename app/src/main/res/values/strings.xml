@@ -29,4 +29,6 @@
     <string name="register">Регистрация</string>
     <string name="already_have_account">Уже есть аккаунт? Войти</string>
     <string name="link_register">Регистрация</string>
+    <string name="categories">Категории</string>
+    <string name="product_search">Поиск товаров</string>
 </resources>
