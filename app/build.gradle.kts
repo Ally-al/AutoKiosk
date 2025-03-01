@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.androidx.navigation.safe.args)
     id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.kapt")
 }
@@ -36,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 kapt {
@@ -60,8 +64,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.glide)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.glide.compiler)
     kapt(libs.hilt.compiler)
+    kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

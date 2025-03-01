@@ -13,8 +13,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.autokiosk.R
+import com.example.autokiosk.presentation.cart.viewmodel.CartViewModel
 import com.example.autokiosk.presentation.catalog.viewmodel.CatalogViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -23,6 +25,7 @@ import kotlinx.coroutines.launch
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     private val viewModel: CatalogViewModel by viewModels()
+    val cartViewModel: CartViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +34,14 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         val recyclerCatalog: RecyclerView = view.findViewById(R.id.recycler_catalog)
         val searchInput: EditText = view.findViewById(R.id.search_input)
 
-        val adapter = CatalogAdapter()
+        val adapter = CatalogAdapter(
+            cartViewModel = cartViewModel,
+            lifecycleOwner = viewLifecycleOwner,
+            onProductClick = { product ->
+                val action = CatalogFragmentDirections.actionCatalogToProduct(product.id)
+                findNavController().navigate(action)
+            }
+        )
         recyclerCatalog.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {

@@ -5,11 +5,31 @@
     android:id="@+id/home_nav_graph"
     app:startDestination="@id/fragment_catalog">
 
-    <fragment
-        android:id="@+id/fragment_catalog"
-        android:name="com.example.autokiosk.presentation.catalog.view.CatalogFragment"
-        android:label="Catalog"
-        tools:layout="@layout/fragment_catalog" />
+        <fragment
+            android:id="@+id/fragment_catalog"
+            android:name="com.example.autokiosk.presentation.catalog.view.CatalogFragment"
+            android:label="Catalog"
+            tools:layout="@layout/fragment_catalog" >
+            <action
+                android:id="@+id/action_catalog_to_product"
+                app:destination="@id/fragment_product">
+                <argument
+                    android:name="productId"
+                    app:argType="string"
+                    app:nullable="false"/>
+            </action>
+        </fragment>
+
+        <fragment
+            android:id="@+id/fragment_product"
+            android:name="com.example.autokiosk.presentation.product.view.ProductFragment"
+            android:label="ProductDetails"
+            tools:layout="@layout/fragment_product_details" >
+            <argument
+                android:name="productId"
+                app:argType="string"
+                android:defaultValue="" />
+        </fragment>
 
     <fragment
         android:id="@+id/fragment_barcode_scanner"
