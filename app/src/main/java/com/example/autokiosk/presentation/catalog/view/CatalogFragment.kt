@@ -7,15 +7,14 @@ import android.text.TextWatcher
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.ListView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.autokiosk.R
+import com.example.autokiosk.databinding.FragmentCatalogBinding
 import com.example.autokiosk.presentation.cart.viewmodel.CartViewModel
 import com.example.autokiosk.presentation.catalog.viewmodel.CatalogViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,13 +25,12 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     private val viewModel: CatalogViewModel by viewModels()
     val cartViewModel: CartViewModel by viewModels()
+    private lateinit var binding: FragmentCatalogBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val filterButton: ImageButton = view.findViewById(R.id.filter_button)
-        val recyclerCatalog: RecyclerView = view.findViewById(R.id.recycler_catalog)
-        val searchInput: EditText = view.findViewById(R.id.search_input)
+        binding = FragmentCatalogBinding.bind(view)
 
         val adapter = CatalogAdapter(
             cartViewModel = cartViewModel,
@@ -42,7 +40,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
                 findNavController().navigate(action)
             }
         )
-        recyclerCatalog.adapter = adapter
+        binding.recyclerCatalog.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.products.collect { products ->
@@ -50,11 +48,11 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             }
         }
 
-        filterButton.setOnClickListener {
+        binding.filterButton.setOnClickListener {
             showCategorySelectionDialog()
         }
 
-        setupSearch(searchInput)
+        setupSearch(binding.searchInput)
     }
 
     private fun showCategorySelectionDialog() {

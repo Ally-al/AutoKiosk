@@ -2,14 +2,12 @@ package com.example.autokiosk.presentation.auth.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.autokiosk.R
+import com.example.autokiosk.databinding.FragmentLoginBinding
 import com.example.autokiosk.presentation.auth.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,22 +15,20 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel: LoginViewModel by viewModels()
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailInput = view.findViewById<EditText>(R.id.user_email)
-        val passwordInput = view.findViewById<EditText>(R.id.user_password)
-        val loginButton = view.findViewById<Button>(R.id.btn_login)
-        val linkRegister = view.findViewById<TextView>(R.id.link_register)
+        binding = FragmentLoginBinding.bind(view)
 
-        loginButton.setOnClickListener {
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
+        binding.btnLogin.setOnClickListener {
+            val email = binding.userEmail.text.toString()
+            val password = binding.userPassword.text.toString()
             viewModel.loginUser(email, password)
         }
 
-        linkRegister.setOnClickListener {
+        binding.linkRegister.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_register)
         }
 
