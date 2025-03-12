@@ -8,8 +8,6 @@ import kotlinx.coroutines.flow.Flow
 data class ProductUseCases(
     val getProducts: GetProductsUseCase,
     val getProductById: GetProductByIdUseCase,
-//    val searchProductsByName: SearchProductsByNameUseCase,
-//    val getProductsByCategory: GetProductsByCategoryUseCase,
     val getCategories: GetCategoriesUseCase
 )
 
@@ -18,18 +16,9 @@ class GetProductsUseCase(private val productRepository: ProductRepository) {
 }
 
 class GetProductByIdUseCase(private val productRepository: ProductRepository) {
-    suspend fun execute(productId: String): Flow<Product> = productRepository.getProductById(productId)
+    suspend fun execute(productId: String): Flow<Product?> = productRepository.getProductById(productId)
 }
-
-//class SearchProductsByNameUseCase(private val productRepository: ProductRepository) {
-//    suspend fun execute(query: String): Flow<List<Product>> = productRepository.searchProductsByName(query)
-//}
-//
-//class GetProductsByCategoryUseCase(private val productRepository: ProductRepository) {
-//    suspend fun execute(category: String): Flow<List<Product>> = productRepository.getProductsByCategory(category)
-//}
 
 class GetCategoriesUseCase(private val productRepository: ProductRepository) {
     suspend fun execute(): Flow<List<Category>> = productRepository.getCategories()
 }
-

@@ -90,7 +90,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             >
 
-
             <ImageButton
                 android:id="@+id/button_minus_catalog"
                 android:layout_width="32dp"

@@ -72,6 +72,7 @@ object AppProvideModule {
     }
 
     @Provides
+    @Singleton
     fun provideCartDao(cartDatabase: CartDatabase): CartDao {
         return cartDatabase.cartDao()
     }

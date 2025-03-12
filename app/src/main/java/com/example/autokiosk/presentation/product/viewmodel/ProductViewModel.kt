@@ -23,7 +23,7 @@ class ProductViewModel @Inject constructor(
     fun loadProduct(productId: String) {
         viewModelScope.launch {
             productUseCases.getProductById.execute(productId)
-                .catch { exception ->
+                .catch { _ ->
                     _product.value = Product()
                 }
                 .collect { product ->

@@ -22,35 +22,15 @@ class ProductRepositoryImpl @Inject constructor(
         emit(productList)
     }
 
-    override suspend fun getProductById(productId: String): Flow<Product> = flow {
-        val product = productCollection.document(productId).get().await().toObject(Product::class.java) ?: Product()
-        emit(product)
+    override suspend fun getProductById(productId: String): Flow<Product?> = flow {
+        val product = productCollection.document(productId).get().await().toObject(Product::class.java)
+
+        if (product == null) {
+            emit(null)
+        } else {
+            emit(product)
+        }
     }
-
-//    override suspend fun getProductsByCategory(category: String): Flow<List<Product>> = flow {
-//        val productList = productCollection
-//            .whereArrayContains("category", category)
-//            .get()
-//            .await()
-//            .documents
-//            .map { document ->
-//                document.toObject(Product::class.java) ?: Product()
-//            }
-//        emit(productList)
-//    }
-
-//    override suspend fun searchProductsByName(query: String): Flow<List<Product>> = flow {
-//        val productList = productCollection
-//            .whereGreaterThanOrEqualTo("productName", query)
-//            .whereLessThanOrEqualTo("productName", "$query\uf8ff")
-//            .get()
-//            .await()
-//            .documents
-//            .map { document ->
-//                document.toObject(Product::class.java) ?: Product()
-//            }
-//        emit(productList)
-//    }
 
     override suspend fun getCategories(): Flow<List<Category>> = flow {
         val categoryList = firestore.collection("categories")
@@ -65,5 +45,4 @@ class ProductRepositoryImpl @Inject constructor(
             }
         emit(categoryList)
     }
-
 }

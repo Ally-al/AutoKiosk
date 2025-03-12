@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     private val viewModel: CatalogViewModel by viewModels()
-    val cartViewModel: CartViewModel by viewModels()
+    private val cartViewModel: CartViewModel by viewModels()
     private lateinit var binding: FragmentCatalogBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

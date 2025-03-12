@@ -44,10 +44,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setMessage("Вы уверены, что хотите выйти?")
             .setCancelable(false)
-            .setPositiveButton("Да") { dialog, id ->
+            .setPositiveButton("Да") { _, _ ->
                 logout()
             }
-            .setNegativeButton("Отмена") { dialog, id ->
+            .setNegativeButton("Отмена") { dialog, _ ->
                 dialog.dismiss()
             }
         val alert = builder.create()
