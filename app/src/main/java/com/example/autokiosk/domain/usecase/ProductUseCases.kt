@@ -1,4 +1,4 @@
-package com.example.autokiosk.domain.usecase.products
+package com.example.autokiosk.domain.usecase
 
 import com.example.autokiosk.domain.models.Category
 import com.example.autokiosk.domain.models.Product

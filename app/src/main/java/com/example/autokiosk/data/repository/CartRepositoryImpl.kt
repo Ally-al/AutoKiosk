@@ -34,7 +34,8 @@ class CartRepositoryImpl @Inject constructor(
     }
 
     override suspend fun decrementQuantity(id: String): Int {
-        return cartDao.decrementQuantity(id)
+        cartDao.decrementQuantity(id)
+        return cartDao.getCartItemQuantity(id) ?: 0
     }
 
     override suspend fun removeFromCart(id: String) {
@@ -47,5 +48,9 @@ class CartRepositoryImpl @Inject constructor(
 
     override fun getAllCartItems(): Flow<List<CartItem>> {
         return cartDao.getAllCartItems()
+    }
+
+    override suspend fun getCartItemQuantity(id: String): Int? {
+        return cartDao.getCartItemQuantity(id)
     }
 }

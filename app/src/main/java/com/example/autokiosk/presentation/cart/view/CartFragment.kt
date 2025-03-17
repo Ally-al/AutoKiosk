@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.autokiosk.R
 import com.example.autokiosk.databinding.FragmentCartBinding
@@ -49,8 +50,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         binding.btnOrder.setOnClickListener {
-            cartViewModel.clearCart()
+            // cartViewModel.clearCart()
             // TODO: обработка нажатия на "оформить заказ"
+            findNavController().navigate(R.id.action_cart_to_payment)
         }
     }
 }

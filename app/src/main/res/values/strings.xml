@@ -22,7 +22,7 @@
     <string name="shelf_life">Срок годности, условия хранения</string>
     <string name="brand">Бренд</string>
     <string name="purchase_history">История покупок</string>
-    <string name="link_card_to_account">Привязка карты</string>
+    <string name="link_card_to_account">Способы оплаты</string>
     <string name="logout">Выйти</string>
     <string name="create_account">Создайте аккаунт</string>
     <string name="hint_confirm_password">Подтвердите пароль</string>
@@ -31,4 +31,11 @@
     <string name="link_register">Регистрация</string>
     <string name="categories">Категории</string>
     <string name="product_search">Поиск товаров</string>
+    <string name="bind_card">Привязать карту</string>
+    <string name="hint_expiry_date">ММ/ГГ</string>
+    <string name="cvv">CVV</string>
+    <string name="card_number">Номер карты</string>
+    <string name="delete_card">Удалить карту</string>
+    <string name="pay">Оплатить</string>
+    <string name="add_card">Добавить карту</string>
 </resources>

@@ -41,7 +41,18 @@
         android:id="@+id/fragment_cart"
         android:name="com.example.autokiosk.presentation.cart.view.CartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cart_to_payment"
+            app:destination="@id/fragment_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_payment"
+        android:name="com.example.autokiosk.presentation.payment.view.PaymentFragment"
+        android:label="Payment"
+        tools:layout="@layout/fragment_payment"
+        />
 
     <fragment
         android:id="@+id/fragment_profile"
@@ -49,12 +60,8 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profile_to_bank_card"
-            app:destination="@id/fragment_bank_card" />
-
-        <action
-            android:id="@+id/action_profile_to_purchase_history"
-            app:destination="@id/fragment_purchase_history" />
+            android:id="@+id/action_profile_to_bank_card_list"
+            app:destination="@id/fragment_card_list" />
         <action
             android:id="@+id/action_profile_to_login"
             app:destination="@id/auth_nav_graph"
@@ -63,16 +70,23 @@
     </fragment>
 
 
-    <fragment
-        android:id="@+id/fragment_purchase_history"
-        android:name="com.example.autokiosk.presentation.profile.view.PurchaseHistoryFragment"
-        android:label="History"
-        tools:layout="@layout/fragment_purchase_history" />
+
 
     <fragment
-        android:id="@+id/fragment_bank_card"
-        android:name="com.example.autokiosk.presentation.profile.view.BankCardFragment"
-        android:label="Bank Card"
-        tools:layout="@layout/fragment_bank_card" />
+        android:id="@+id/fragment_card_list"
+        android:name="com.example.autokiosk.presentation.card.view.CardListFragment"
+        android:label="Bank Card List"
+        tools:layout="@layout/fragment_card_list" >
+        <action
+            android:id="@+id/action_card_list_to_card_binding"
+            app:destination="@id/fragment_card_binding" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_card_binding"
+        android:name="com.example.autokiosk.presentation.card.view.CardBindingFragment"
+        android:label="Bank Card Binding"
+        tools:layout="@layout/fragment_card_binding"
+        />
 
 </navigation>

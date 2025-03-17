@@ -69,7 +69,10 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
         listView.divider = null
 
-        lateinit var dialog: AlertDialog
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(listView)
+            .setNegativeButton("Закрыть", null)
+            .create()
 
         fun updateDialog() {
             items.clear()
@@ -114,11 +117,6 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
                 }
             }
         }
-
-        dialog = AlertDialog.Builder(requireContext())
-            .setView(listView)
-            .setNegativeButton("Отмена", null)
-            .create()
 
         dialog.setOnShowListener {
             updateDialog()

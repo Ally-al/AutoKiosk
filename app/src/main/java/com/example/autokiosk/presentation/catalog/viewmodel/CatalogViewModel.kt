@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autokiosk.domain.models.Category
 import com.example.autokiosk.domain.models.Product
-import com.example.autokiosk.domain.usecase.products.ProductUseCases
+import com.example.autokiosk.domain.usecase.ProductUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -75,4 +75,3 @@ class CatalogViewModel @Inject constructor(
         applyFilters()
     }
 }
-

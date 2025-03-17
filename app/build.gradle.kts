@@ -70,10 +70,10 @@ dependencies {
     implementation(libs.camerax.core)
     implementation(libs.camerax.lifecycle)
     implementation(libs.camerax.view)
-
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.camera2)
+    implementation(libs.zxing.core)
     annotationProcessor(libs.glide.compiler)
     kapt(libs.hilt.compiler)
     kapt(libs.androidx.room.compiler)

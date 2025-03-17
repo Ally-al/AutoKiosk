@@ -10,7 +10,7 @@
 
     <style name="Buttons">
         <item name="android:layout_height">60dp</item>
-        <item name="backgroundTint">@color/blue_accent</item>
+        <item name="backgroundTint">@color/color_primary</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>

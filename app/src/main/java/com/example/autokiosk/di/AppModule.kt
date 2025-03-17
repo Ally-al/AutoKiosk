@@ -4,16 +4,31 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.autokiosk.data.local.CartDao
-import com.example.autokiosk.data.local.CartDatabase
+import com.example.autokiosk.data.local.AppDatabase
+import com.example.autokiosk.data.local.CardDao
+import com.example.autokiosk.data.local.MIGRATION_2_3
+import com.example.autokiosk.data.repository.CardRepositoryImpl
 import com.example.autokiosk.data.repository.CartRepositoryImpl
 import com.example.autokiosk.data.repository.ProductRepositoryImpl
+import com.example.autokiosk.domain.repository.CardRepository
 import com.example.autokiosk.domain.repository.CartRepository
 import com.example.autokiosk.domain.repository.ProductRepository
-import com.example.autokiosk.domain.usecase.cart.*
-import com.example.autokiosk.domain.usecase.products.GetCategoriesUseCase
-import com.example.autokiosk.domain.usecase.products.GetProductByIdUseCase
-import com.example.autokiosk.domain.usecase.products.GetProductsUseCase
-import com.example.autokiosk.domain.usecase.products.ProductUseCases
+import com.example.autokiosk.domain.usecase.AddCardUseCase
+import com.example.autokiosk.domain.usecase.AddToCartUseCase
+import com.example.autokiosk.domain.usecase.CardUseCases
+import com.example.autokiosk.domain.usecase.CartUseCases
+import com.example.autokiosk.domain.usecase.ClearCartUseCase
+import com.example.autokiosk.domain.usecase.DecrementQuantityUseCase
+import com.example.autokiosk.domain.usecase.GetAllCardsUseCase
+import com.example.autokiosk.domain.usecase.GetCartItemQuantityUseCase
+import com.example.autokiosk.domain.usecase.GetCartItemsUseCase
+import com.example.autokiosk.domain.usecase.IncrementQuantityUseCase
+import com.example.autokiosk.domain.usecase.RemoveFromCartUseCase
+import com.example.autokiosk.domain.usecase.GetCategoriesUseCase
+import com.example.autokiosk.domain.usecase.GetProductByIdUseCase
+import com.example.autokiosk.domain.usecase.GetProductsUseCase
+import com.example.autokiosk.domain.usecase.ProductUseCases
+import com.example.autokiosk.domain.usecase.RemoveCardUseCase
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Binds
 import dagger.Module
@@ -37,6 +52,12 @@ abstract class AppBindModule {
     abstract fun bindCartRepository(
         cartRepositoryImpl: CartRepositoryImpl
     ): CartRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCardRepository(
+        cardRepositoryImpl: CardRepositoryImpl
+    ): CardRepository
 }
 
 @Module
@@ -63,18 +84,26 @@ object AppProvideModule {
 
     @Provides
     @Singleton
-    fun provideCartDatabase(context: Context): CartDatabase {
+    fun provideAppDatabase(context: Context): AppDatabase {
         return Room.databaseBuilder(
             context,
-            CartDatabase::class.java,
-            "cart_db"
-        ).build()
+            AppDatabase::class.java,
+            "app_database"
+        )
+            .addMigrations(MIGRATION_2_3)
+             .build()
     }
 
     @Provides
     @Singleton
-    fun provideCartDao(cartDatabase: CartDatabase): CartDao {
-        return cartDatabase.cartDao()
+    fun provideCartDao(appDatabase: AppDatabase): CartDao {
+        return appDatabase.cartDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCardDao(appDatabase: AppDatabase): CardDao {
+        return appDatabase.cardDao()
     }
 
     @Provides
@@ -86,7 +115,17 @@ object AppProvideModule {
             decrementQuantity = DecrementQuantityUseCase(repository),
             removeFromCart = RemoveFromCartUseCase(repository),
             clearCart = ClearCartUseCase(repository),
-            getCartItems = GetCartItemsUseCase(repository)
+            getCartItems = GetCartItemsUseCase(repository),
+            getCartItemQuantity = GetCartItemQuantityUseCase(repository)
+        )
+    }
+
+    @Provides
+    fun provideCardUseCases(repository: CardRepository): CardUseCases {
+        return CardUseCases(
+            getAllCards = GetAllCardsUseCase(repository),
+            addCard = AddCardUseCase(repository),
+            removeCard = RemoveCardUseCase(repository)
         )
     }
 }

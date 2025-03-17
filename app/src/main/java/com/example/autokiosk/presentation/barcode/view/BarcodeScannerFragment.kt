@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -55,7 +54,6 @@ class BarcodeScannerFragment : Fragment(R.layout.fragment_barcode_scanner) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentBarcodeScannerBinding.bind(view)
 
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -121,7 +119,7 @@ class BarcodeScannerFragment : Fragment(R.layout.fragment_barcode_scanner) {
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
             } catch (e: Exception) {
-                Log.e("BarcodeScanner", "Ошибка запуска камеры", e)
+                Toast.makeText(requireContext(), "Ошибка запуска камеры", Toast.LENGTH_SHORT).show()
             }
         }, ContextCompat.getMainExecutor(requireContext()))
     }
@@ -155,7 +153,6 @@ class BarcodeScannerFragment : Fragment(R.layout.fragment_barcode_scanner) {
                     InputImage.IMAGE_FORMAT_NV21
                 )
             } catch (e: IllegalArgumentException) {
-                Log.e("BarcodeScanner", "Ошибка создания InputImage: ${e.message}")
                 imageProxy.close()
                 return
             }
@@ -172,14 +169,10 @@ class BarcodeScannerFragment : Fragment(R.layout.fragment_barcode_scanner) {
                         }
                     }
                 }
-                .addOnFailureListener { e ->
-                    Log.e("BarcodeScanner", "Ошибка при сканировании", e)
-                }
                 .addOnCompleteListener {
                     imageProxy.close()
                 }
         } catch (e: Exception) {
-            Log.e("BarcodeScanner", "Ошибка обработки изображения", e)
             imageProxy.close()
         }
     }

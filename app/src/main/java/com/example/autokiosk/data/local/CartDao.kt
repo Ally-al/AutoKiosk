@@ -27,4 +27,7 @@ interface CartDao {
 
     @Query("SELECT * FROM cart_items")
     fun getAllCartItems(): Flow<List<CartItem>>
+
+    @Query("SELECT quantity FROM cart_items WHERE id = :id")
+    suspend fun getCartItemQuantity(id: String): Int?
 }

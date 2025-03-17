@@ -29,6 +29,4 @@ class RegisterViewModel @Inject constructor(
             _registerResult.value = result
         }
     }
-
-
 }

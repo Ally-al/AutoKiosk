@@ -3,7 +3,7 @@ package com.example.autokiosk.presentation.product.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autokiosk.domain.models.Product
-import com.example.autokiosk.domain.usecase.products.ProductUseCases
+import com.example.autokiosk.domain.usecase.ProductUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

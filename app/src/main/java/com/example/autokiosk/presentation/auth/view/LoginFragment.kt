@@ -40,6 +40,5 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 Toast.makeText(requireContext(), "Ошибка входа!", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }

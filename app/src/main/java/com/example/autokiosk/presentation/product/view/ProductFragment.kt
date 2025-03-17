@@ -99,5 +99,4 @@ class ProductFragment : Fragment(R.layout.fragment_product_details) {
             TabLayoutMediator(binding.tabLayout, binding.productImageGalleryViewpager) { _, _ -> }.attach()
         }
     }
-
 }

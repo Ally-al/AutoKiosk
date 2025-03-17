@@ -3,7 +3,7 @@ package com.example.autokiosk.presentation.cart.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autokiosk.domain.models.CartItem
-import com.example.autokiosk.domain.usecase.cart.CartUseCases
+import com.example.autokiosk.domain.usecase.CartUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -44,7 +44,7 @@ class CartViewModel @Inject constructor(
         }
     }
 
-    fun clearCart() {
+    fun clearCart() { // не используется
         viewModelScope.launch {
             cartUseCases.clearCart.execute()
         }
@@ -55,6 +55,7 @@ class CartViewModel @Inject constructor(
             .map { cart -> cart.find { it.id == id }?.quantity ?: 0 }
             .stateIn(viewModelScope, SharingStarted.Lazily, 0)
     }
+
 
     fun isProductInCart(id: String): StateFlow<Boolean> {
         return cartItems
