@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.autokiosk.R
+import com.example.autokiosk.databinding.ItemCardBinding
 import com.example.autokiosk.domain.models.Card
 
 class CardAdapter(private val onDelete: (String) -> Unit) :
     ListAdapter<Card, CardAdapter.CardViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
-        return CardViewHolder(view)
+        val binding = ItemCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CardViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -24,13 +25,12 @@ class CardAdapter(private val onDelete: (String) -> Unit) :
         holder.bind(card)
     }
 
-    inner class CardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val cardNumber: TextView = view.findViewById(R.id.tvCardNumber)
-        private val deleteIcon: ImageView = view.findViewById(R.id.btnDeleteCard)
+    inner class CardViewHolder(private val binding: ItemCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(card: Card) {
-            cardNumber.text = "**** ${card.lastFourDigits}"
-            deleteIcon.setOnClickListener {
+            binding.tvCardNumber.text = "**** ${card.lastFourDigits}"
+            binding.btnDeleteCard.setOnClickListener {
                 onDelete(card.id)
             }
         }

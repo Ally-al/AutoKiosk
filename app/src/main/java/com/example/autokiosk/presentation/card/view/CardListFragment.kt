@@ -3,8 +3,8 @@ package com.example.autokiosk.presentation.card.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.navigation.fragment.findNavController
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class CardListFragment : Fragment(R.layout.fragment_card_list) {
 
     private lateinit var binding: FragmentCardListBinding
-    private val viewModel: CardViewModel by viewModels()
+    private val viewModel: CardViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

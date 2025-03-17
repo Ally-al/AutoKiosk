@@ -12,7 +12,7 @@ import com.example.autokiosk.presentation.card.viewmodel.CardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CardBindingFragment : Fragment(R.layout.fragment_card_binding) {
+    class CardBindingFragment : Fragment(R.layout.fragment_card_binding) {
 
     private lateinit var binding: FragmentCardBindingBinding
     private val viewModel: CardViewModel by activityViewModels()

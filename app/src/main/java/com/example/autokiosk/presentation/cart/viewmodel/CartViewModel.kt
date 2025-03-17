@@ -44,7 +44,7 @@ class CartViewModel @Inject constructor(
         }
     }
 
-    fun clearCart() { // не используется
+    fun clearCart() {
         viewModelScope.launch {
             cartUseCases.clearCart.execute()
         }

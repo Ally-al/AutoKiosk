@@ -51,8 +51,11 @@
         android:id="@+id/fragment_payment"
         android:name="com.example.autokiosk.presentation.payment.view.PaymentFragment"
         android:label="Payment"
-        tools:layout="@layout/fragment_payment"
-        />
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_payment_to_catalog"
+            app:destination="@id/fragment_catalog" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_profile"

@@ -3,7 +3,7 @@ package com.example.autokiosk.presentation.cart.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.onEach
 class CartFragment : Fragment(R.layout.fragment_cart) {
 
     private lateinit var cartAdapter: CartAdapter
-    private val cartViewModel: CartViewModel by viewModels()
+    private val cartViewModel: CartViewModel by activityViewModels()
 
     private lateinit var binding: FragmentCartBinding
 
@@ -50,8 +50,6 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         binding.btnOrder.setOnClickListener {
-            // cartViewModel.clearCart()
-            // TODO: обработка нажатия на "оформить заказ"
             findNavController().navigate(R.id.action_cart_to_payment)
         }
     }

@@ -38,4 +38,7 @@
     <string name="delete_card">Удалить карту</string>
     <string name="pay">Оплатить</string>
     <string name="add_card">Добавить карту</string>
+    <string name="change">Изменить</string>
+    <string name="try_again">Попробовать снова</string>
+    <string name="return_to_catalog">Вернуться в каталог</string>
 </resources>
