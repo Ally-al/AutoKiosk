@@ -1,6 +1,15 @@
 # AutoKiosk
 Android-приложение для покупок через киоски самообслуживания.
 
+## Технологии
+
+- Язык: Kotlin
+- Архитектура: Clean Architecture + MVVM
+- База данных: Firebase Firestore + Room (для локального хранения)
+- DI: Dagger Hilt
+- UI: XML
+- Навигация: Jetpack Navigation Component
+
 ## Как запустить проект
 
 ### Вариант 1: Через Android Studio
