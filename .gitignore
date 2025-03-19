@@ -47,3 +47,6 @@ google-services.json
 
 structure.txt
 
+# Release APK и связанные файлы
+app/release/output-metadata.json
+app/release/baselineProfiles/
