@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 class PaymentFragment : Fragment(R.layout.fragment_payment) {
 
     private lateinit var binding: FragmentPaymentBinding
-    private val paymentViewModel: PaymentViewModel by viewModels()
+    internal val paymentViewModel: PaymentViewModel by viewModels()
     private val cardViewModel: CardViewModel by activityViewModels()
     private val cartViewModel: CartViewModel by activityViewModels()
 

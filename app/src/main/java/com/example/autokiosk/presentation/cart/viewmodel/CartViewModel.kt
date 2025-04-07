@@ -18,7 +18,7 @@ class CartViewModel @Inject constructor(
 ) : ViewModel() {
 
     val cartItems: StateFlow<List<CartItem>> = cartUseCases.getCartItems.execute()
-        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     fun addToCart(id: String, quantity: Int) {
         viewModelScope.launch {
@@ -53,13 +53,13 @@ class CartViewModel @Inject constructor(
     fun getCartItemQuantity(id: String): StateFlow<Int> {
         return cartItems
             .map { cart -> cart.find { it.id == id }?.quantity ?: 0 }
-            .stateIn(viewModelScope, SharingStarted.Lazily, 0)
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(0), 0)
     }
 
 
     fun isProductInCart(id: String): StateFlow<Boolean> {
         return cartItems
             .map { cart -> cart.any { it.id == id } }
-            .stateIn(viewModelScope, SharingStarted.Lazily, false)
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(0), false)
     }
 }
