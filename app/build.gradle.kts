@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.androidx.navigation.safe.args)
 
     id("org.jetbrains.kotlin.kapt")
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -127,4 +126,9 @@ dependencies {
 
     // Debug tools
     debugImplementation(libs.androidx.fragment.testing)
+}
+
+val googleServicesFile = rootProject.file("app/google-services.json")
+if (googleServicesFile.exists()) {
+    apply(plugin = "com.google.gms.google-services")
 }
