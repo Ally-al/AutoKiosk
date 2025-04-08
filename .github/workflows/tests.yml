@@ -27,32 +27,4 @@ jobs:
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
-  build-release-apk:
-    name: Build Release APK
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: Decode Keystore
-        run: |
-          echo "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 -d > app/release-key.jks
-
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v3
-
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
-
-      - name: Upload Release APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release.apk
-          path: app/build/outputs/apk/release/app-release.apk
+  
